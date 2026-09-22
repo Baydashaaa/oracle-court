@@ -1,0 +1,20 @@
+[package]
+name = "oracle-court-integration"
+version = "0.1.0"
+edition = "2021"
+publish = false
+
+# Отдельный крейт, чтобы контракт суда не зависел от соседнего репозитория.
+# Запуск: cd integration && cargo test
+# Нужна рядом папка ../../oracle-prophecy на ветке с версией 0.2.0.
+
+[dev-dependencies]
+oracle-court = { path = "..", features = ["library"] }
+oracle-prophecy = { path = "../../oracle-prophecy", features = ["library"] }
+cosmwasm-std = "1.5.0"
+cw-multi-test = "0.20.0"
+anyhow = "1.0"
+serde = { version = "1.0", features = ["derive"] }
+
+[lib]
+doctest = false
