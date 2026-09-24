@@ -256,8 +256,8 @@ fn disputed(w: &mut World, proposed: bool) {
         BOND,
     )
     .unwrap();
-    run(&mut w.app, ALICE, &m, &PExec::Bet { market_id: 1, side: true }, 400).unwrap();
-    run(&mut w.app, BOB, &m, &PExec::Bet { market_id: 1, side: false }, 600).unwrap();
+    run(&mut w.app, ALICE, &m, &PExec::Predict { market_id: 1, side: true }, 400).unwrap();
+    run(&mut w.app, BOB, &m, &PExec::Predict { market_id: 1, side: false }, 600).unwrap();
     advance(&mut w.app, 1_000 + CUTOFF + 2);
     run(
         &mut w.app,
@@ -418,8 +418,8 @@ fn a_council_member_with_a_stake_cannot_vote() {
         BOND,
     )
     .unwrap();
-    run(&mut w.app, C1, &m, &PExec::Bet { market_id: 1, side: true }, 400).unwrap();
-    run(&mut w.app, BOB, &m, &PExec::Bet { market_id: 1, side: false }, 600).unwrap();
+    run(&mut w.app, C1, &m, &PExec::Predict { market_id: 1, side: true }, 400).unwrap();
+    run(&mut w.app, BOB, &m, &PExec::Predict { market_id: 1, side: false }, 600).unwrap();
     advance(&mut w.app, 1_000 + CUTOFF + 2);
     run(&mut w.app, RESOLVER, &m, &PExec::Propose { market_id: 1, outcome: true, reading: "r".into() }, 0).unwrap();
     run(&mut w.app, CAROL, &m, &PExec::Challenge { market_id: 1, reading: "x".into() }, CH_BOND).unwrap();
